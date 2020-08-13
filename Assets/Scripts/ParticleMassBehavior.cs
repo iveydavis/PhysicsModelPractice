@@ -11,8 +11,7 @@ public class ParticleMassBehavior : MonoBehaviour
 
     [SerializeField]
     Vector3 initialVelocity = new Vector3(0.0f,0.0f,0.0f);
-    Vector3 previousVelocity;
-
+    
     GameObject[] particles;
     Rigidbody rigidBody3D;
     PaceController environControl;
@@ -22,7 +21,6 @@ public class ParticleMassBehavior : MonoBehaviour
     {
         environControl = GameObject.Find("EnvironmentControls").GetComponent<PaceController>();
         distanceMultiplier = environControl.dist;
-        previousVelocity = initialVelocity;
         particles = GameObject.FindGameObjectsWithTag("Particle");
         rigidBody3D = GetComponent<Rigidbody>();
         rigidBody3D.velocity = initialVelocity;
