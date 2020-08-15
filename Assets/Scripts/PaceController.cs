@@ -4,32 +4,33 @@ using UnityEngine;
 
 public class PaceController : MonoBehaviour
 {
-    enum TimeScale{
+    public enum TimeScale{
         second,
         minute,
         hour,
         day
     }
     [SerializeField]
-    TimeScale timeScale;
+    public TimeScale timeScale;
 
-    enum DistanceScale{
+    public enum DistanceScale{
         JupiterRadius,
         SolarRadius,
-        AU
+        AU,
+        oneToOne
     }
-    [SerializeField]
-    DistanceScale distanceScale;
-    public float dist;
+    
+    public DistanceScale distanceScale;
+    float dist;
     float million = Mathf.Pow(10f,6f);
     float billion = Mathf.Pow(10f,9f);
 
-    void Start()
-    {
-        SetTimeScale(timeScale);
-        SetDistanceScale(distanceScale);
-    }
-    void SetTimeScale(TimeScale scale)
+    // void Start()
+    // {
+    //     SetTimeScale(timeScale);
+    //     SetDistanceScale(distanceScale);
+    // }
+    public void SetTimeScale(TimeScale scale)
     {
         switch(scale){
             case TimeScale.second:
@@ -49,18 +50,17 @@ public class PaceController : MonoBehaviour
         }
 
     }
-    void SetDistanceScale(DistanceScale distance)
+    public float SetDistanceScale(DistanceScale distance)
     {
         switch(distance){
             case DistanceScale.JupiterRadius:
-                dist = 69.911f*million;
-                return;
+                return 69.911f*million;
             case DistanceScale.SolarRadius:
-                dist = 693.34f*million;
-                return;
+                return 693.34f*million;
             case DistanceScale.AU:
-                dist = 149.6f*billion;
-                return;
+                return 149.6f*billion;
+            case DistanceScale.oneToOne:
+                return 1f;
             default:
                 throw new System.Exception("Unrecognized distance scale: "+ distance);
         }
