@@ -307,11 +307,11 @@ MonoBehaviour:
     type: 3}
   neutronPrefab: {fileID: 5380115071290139531, guid: 584b4ab37546c194586b26243b005cbb,
     type: 3}
-  nParticles: 10
+  nParticles: 100
   cloudComposition: 3
   percentElectron: 50
-  innerRadius: 1.5
-  outerRadius: 2.5
+  innerRadius: 1
+  outerRadius: 2
 --- !u!1001 &1012714289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -657,7 +657,7 @@ PrefabInstance:
     - target: {fileID: 6650200143387525219, guid: a84fb5e60748c714a9f74de7dd6d1ad1,
         type: 3}
       propertyPath: distanceScale
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a84fb5e60748c714a9f74de7dd6d1ad1, type: 3}
