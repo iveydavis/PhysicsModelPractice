@@ -5,7 +5,7 @@ using UnityEngine;
 public class ParticleCloud : MonoBehaviour
 {
     Vector3 origin;
-    Rigidbody rigidbody;
+    // Rigidbody rigidbody;
     public GameObject electronPrefab;
     public GameObject protonPrefab;
     public GameObject neutronPrefab;
@@ -41,14 +41,18 @@ public class ParticleCloud : MonoBehaviour
     [Min(1f)]
     [SerializeField]
     float outerRadius;
-
+    PaceController environmentController;
     ParticleMassBehavior coreController;
     float coreMass;
+    float distanceScale;
 
     void Awake()
     {
-        rigidbody = GetComponent<Rigidbody>();
-        origin = rigidbody.position;
+        environmentController = GameObject.Find("EnvironmentControls").GetComponent<PaceController>();
+        distanceScale = environmentController.SetDistanceScale(environmentController.distanceScale);
+        // rigidbody = GetComponent<Rigidbody>();
+        // origin = rigidbody.position;
+        origin = transform.position;
         coreController = GetComponent<ParticleMassBehavior>();
         coreMass = coreController.mass;
         DeterminePopulation();
@@ -77,6 +81,7 @@ public class ParticleCloud : MonoBehaviour
         Vector3 vel = new Vector3(xval,yval);
         vel = vel/vel.magnitude;
         float radius = pos.magnitude;
+        //Debug.Log(radius);
         Vector3 zvec = new Vector3(0,0,pos.z);
         float G = 6.67f*Mathf.Pow(10f,-11f);
         float theta = Mathf.Acos(Vector3.Dot(pos,zvec)/(pos.z*radius)); //angle from z axis
@@ -109,11 +114,12 @@ public class ParticleCloud : MonoBehaviour
     {
         for (int i = 0; i < N; i++){
             Vector3 pos = DeterminePosition();
-            Vector3 velocity = DetermineInitialVelocity(pos);
+            Vector3 velocity = DetermineInitialVelocity(pos*distanceScale);
             Vector3 truePos = origin + pos;
             GameObject particle = Instantiate(prefab,truePos,Quaternion.identity);
             ParticleMassBehavior particleBehavior = particle.GetComponent<ParticleMassBehavior>();
-            particleBehavior.initialVelocity = velocity;
+            particleBehavior.initialVelocity = velocity; // i don't think this actually does anything
+            particleBehavior.velocity = velocity; // this is way too fast
         }
     }
 }

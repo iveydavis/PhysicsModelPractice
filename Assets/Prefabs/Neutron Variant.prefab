@@ -7,9 +7,44 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 690326697482193919, guid: 74bfda14bbb288346a0fba6bb813f60b,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 734510397404543406, guid: 74bfda14bbb288346a0fba6bb813f60b,
         type: 3}
       propertyPath: charge
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 734510397404543406, guid: 74bfda14bbb288346a0fba6bb813f60b,
+        type: 3}
+      propertyPath: mass
+      value: 1e-27
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825313830836104043, guid: 74bfda14bbb288346a0fba6bb813f60b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 82f2169ce3234e44f8b37ede386ea606, type: 2}
+    - target: {fileID: 5825313830836104043, guid: 74bfda14bbb288346a0fba6bb813f60b,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825313830836104043, guid: 74bfda14bbb288346a0fba6bb813f60b,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825313830836104043, guid: 74bfda14bbb288346a0fba6bb813f60b,
+        type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825313830836104043, guid: 74bfda14bbb288346a0fba6bb813f60b,
+        type: 3}
+      propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7351729152490143004, guid: 74bfda14bbb288346a0fba6bb813f60b,
@@ -67,10 +102,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7351729152490143004, guid: 74bfda14bbb288346a0fba6bb813f60b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7351729152490143004, guid: 74bfda14bbb288346a0fba6bb813f60b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7351729152490143004, guid: 74bfda14bbb288346a0fba6bb813f60b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7747493660180687928, guid: 74bfda14bbb288346a0fba6bb813f60b,
         type: 3}
       propertyPath: m_Name
-      value: Neutron
+      value: Neutron Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74bfda14bbb288346a0fba6bb813f60b, type: 3}

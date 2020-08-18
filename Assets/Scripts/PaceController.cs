@@ -5,19 +5,22 @@ using UnityEngine;
 public class PaceController : MonoBehaviour
 {
     public enum TimeScale{
+        defaultScale,
         second,
         minute,
         hour,
         day
     }
-    [SerializeField]
+    //[SerializeField]
     public TimeScale timeScale;
+
 
     public enum DistanceScale{
         JupiterRadius,
         SolarRadius,
         AU,
-        oneToOne
+        oneToOne,
+        Angstrom
     }
     
     public DistanceScale distanceScale;
@@ -30,21 +33,24 @@ public class PaceController : MonoBehaviour
     //     SetTimeScale(timeScale);
     //     SetDistanceScale(distanceScale);
     // }
-    public void SetTimeScale(TimeScale scale)
+    public float SetTimeScale(TimeScale scale)
     {
         switch(scale){
+            case TimeScale.defaultScale:
+                Time.fixedDeltaTime = 0.02f;
+                return 1.0f;
             case TimeScale.second:
-                Time.timeScale = 1.0f;
-                return;
+                //Time.fixedDeltaTime = 1f;
+                return 1.0f;
             case TimeScale.minute:
-                Time.timeScale = 60f;
-                return;
+                //Time.fixedDeltaTime = 1f;
+                return 60f;
             case TimeScale.hour:
-                Time.timeScale= 3600f;
-                return;
+                //Time.fixedDeltaTime = 1f;
+                return 3600f;
             case TimeScale.day:
-                Time.timeScale = 3600f*24f;
-                return;
+                //Time.fixedDeltaTime = 1f;
+                return 3600f*24f;
             default:
                 throw new System.Exception("Unrecognized time scale: "+scale);
         }
@@ -61,6 +67,8 @@ public class PaceController : MonoBehaviour
                 return 149.6f*billion;
             case DistanceScale.oneToOne:
                 return 1f;
+            case DistanceScale.Angstrom:
+                return Mathf.Pow(10f,-10f);
             default:
                 throw new System.Exception("Unrecognized distance scale: "+ distance);
         }

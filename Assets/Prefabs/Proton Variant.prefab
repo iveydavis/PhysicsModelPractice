@@ -17,6 +17,11 @@ PrefabInstance:
       propertyPath: charge
       value: 1e-19
       objectReference: {fileID: 0}
+    - target: {fileID: 3118910485709442686, guid: d067bfcdd29f00c42b051458982d9efa,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 4961425549602338973, guid: d067bfcdd29f00c42b051458982d9efa,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -72,10 +77,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4961425549602338973, guid: d067bfcdd29f00c42b051458982d9efa,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961425549602338973, guid: d067bfcdd29f00c42b051458982d9efa,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4961425549602338973, guid: d067bfcdd29f00c42b051458982d9efa,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5285168334805920185, guid: d067bfcdd29f00c42b051458982d9efa,
         type: 3}
       propertyPath: m_Name
-      value: Proton
+      value: Proton Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8217869641443258090, guid: d067bfcdd29f00c42b051458982d9efa,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8217869641443258090, guid: d067bfcdd29f00c42b051458982d9efa,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8217869641443258090, guid: d067bfcdd29f00c42b051458982d9efa,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8217869641443258090, guid: d067bfcdd29f00c42b051458982d9efa,
+        type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8217869641443258090, guid: d067bfcdd29f00c42b051458982d9efa,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1afe0c771edffc44594da97e8fa04424, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d067bfcdd29f00c42b051458982d9efa, type: 3}
