@@ -118,8 +118,8 @@ public class ParticleCloud : MonoBehaviour
             Vector3 truePos = origin + pos;
             GameObject particle = Instantiate(prefab,truePos,Quaternion.identity);
             ParticleMassBehavior particleBehavior = particle.GetComponent<ParticleMassBehavior>();
-            particleBehavior.initialVelocity = velocity; // i don't think this actually does anything
-            particleBehavior.velocity = velocity*0.00001f; // this is way too fast
+            // particleBehavior.initialVelocity = velocity; // i don't think this actually does anything
+            particleBehavior.velocity = velocity*0.00001f; // this is way too fast as just velocity
         }
     }
 }

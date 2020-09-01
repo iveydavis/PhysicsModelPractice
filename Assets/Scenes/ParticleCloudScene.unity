@@ -322,7 +322,7 @@ PrefabInstance:
     - target: {fileID: 2949173474049276975, guid: d067bfcdd29f00c42b051458982d9efa,
         type: 3}
       propertyPath: mass
-      value: 1e+29
+      value: 1e+30
       objectReference: {fileID: 0}
     - target: {fileID: 2949173474049276975, guid: d067bfcdd29f00c42b051458982d9efa,
         type: 3}
@@ -332,6 +332,11 @@ PrefabInstance:
     - target: {fileID: 2949173474049276975, guid: d067bfcdd29f00c42b051458982d9efa,
         type: 3}
       propertyPath: charge
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2949173474049276975, guid: d067bfcdd29f00c42b051458982d9efa,
+        type: 3}
+      propertyPath: magneticMoment.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4961425549602338973, guid: d067bfcdd29f00c42b051458982d9efa,
@@ -652,7 +657,7 @@ PrefabInstance:
     - target: {fileID: 6650200143387525219, guid: a84fb5e60748c714a9f74de7dd6d1ad1,
         type: 3}
       propertyPath: timeScale
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6650200143387525219, guid: a84fb5e60748c714a9f74de7dd6d1ad1,
         type: 3}

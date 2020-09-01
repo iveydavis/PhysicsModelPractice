@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 2949173474049276975, guid: d067bfcdd29f00c42b051458982d9efa,
         type: 3}
       propertyPath: charge
-      value: -1e-11
+      value: -1e-19
       objectReference: {fileID: 0}
     - target: {fileID: 3118910485709442686, guid: d067bfcdd29f00c42b051458982d9efa,
         type: 3}

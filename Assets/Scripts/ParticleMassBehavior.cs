@@ -13,6 +13,8 @@ public class ParticleMassBehavior : MonoBehaviour
     [SerializeField]
     float charge;
     GameObject[] particles;
+    
+    public Vector3 magneticMoment = Vector3.zero;
     PaceController environControl;
     float distanceMultiplier;
     float velocityMultiplier;
@@ -22,15 +24,15 @@ public class ParticleMassBehavior : MonoBehaviour
         environControl = GameObject.Find("EnvironmentControls").GetComponent<PaceController>();
         distanceMultiplier = environControl.SetDistanceScale(environControl.distanceScale);
         velocityMultiplier = environControl.SetTimeScale(environControl.timeScale);
-        particles = GameObject.FindGameObjectsWithTag("Particle");
         velocity = initialVelocity*velocityMultiplier;
     }
 
     void FixedUpdate()
     {
-        // Vector3 totalAcceleration = Vector3.zero;
-        Vector3 totalVelocity = Vector3.zero;
+        particles = GameObject.FindGameObjectsWithTag("Particle");
+        Vector3 newVelSum = Vector3.zero;
         Vector3 collisionVelocity = Vector3.zero;
+        Vector3 magneticFieldVelocity = Vector3.zero;
         float accMultiplier = Mathf.Pow(velocityMultiplier,2f);
         foreach (GameObject particle in particles){
             if (particle!= this.gameObject){
@@ -38,7 +40,8 @@ public class ParticleMassBehavior : MonoBehaviour
                 ParticleMassBehavior otherParticle = particle.GetComponent<ParticleMassBehavior>();
                 float otherMass = otherParticle.mass;
                 float otherCharge = otherParticle.charge;
-                if (dist.magnitude < 0.1f){
+                float deltaR = (particle.transform.localScale.x - this.transform.localScale.x)/2;
+                if (dist.magnitude < Mathf.Abs(deltaR)){
                     Vector3 x1 = transform.position;
                     Vector3 x2 = particle.transform.position;
                     Vector3 v1 = this.velocity;
@@ -48,15 +51,19 @@ public class ParticleMassBehavior : MonoBehaviour
                 dist = dist*distanceMultiplier;
                 Vector3 velocityGravity = AccelerationGravity(dist,otherMass)*accMultiplier*Time.fixedDeltaTime;
                 Vector3 velocityCharge = AccelerationElectric(dist,otherCharge)*accMultiplier*Time.fixedDeltaTime;
-                totalVelocity += velocityGravity;
-                totalVelocity += velocityCharge;
-                totalVelocity += collisionVelocity;
+                if (otherParticle.magneticMoment != Vector3.zero){
+                    Vector3 magneticFieldAcceleration = AccelerationMagneticDipole(dist,otherParticle.magneticMoment);
+                    magneticFieldVelocity = magneticFieldAcceleration*accMultiplier*Time.fixedDeltaTime;
+                }
+                newVelSum += velocityGravity;
+                newVelSum += velocityCharge;
+                newVelSum += collisionVelocity;
+                newVelSum += magneticFieldVelocity;
             }
         
-        velocity += totalVelocity;
+        velocity += newVelSum/distanceMultiplier;
+        // Debug.Log(velocity.magnitude);
         Vector3 deltaPos = 0.5f*velocity*Time.fixedDeltaTime;
-        // rigidBody3D.AddForce(velocity,ForceMode.VelocityChange);
-        //Debug.Log(deltaPos);
         transform.position += deltaPos;
         }
     }
@@ -94,5 +101,17 @@ public class ParticleMassBehavior : MonoBehaviour
             newV = Vector3.zero;
         }
         return newV;
+    }
+
+    Vector3 AccelerationMagneticDipole(Vector3 dist, Vector3 magMoment)
+    {
+        float distMag = dist.magnitude;
+        Vector3 rUnit = dist/distMag;
+        float pi = Mathf.PI;
+        float mu0 = 4f*pi*Mathf.Pow(10f,-7f);
+        Vector3 magField = (charge*mu0*(3*rUnit*Vector3.Dot(magMoment,rUnit) -magMoment))/(mass*4f*pi*Mathf.Pow(distMag,3f));
+        Vector3 magneticFieldAcceleration = Vector3.Cross(velocity,magField);
+        Debug.Log(magField);
+        return magneticFieldAcceleration;
     }
 }

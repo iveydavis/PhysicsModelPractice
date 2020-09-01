@@ -9,7 +9,8 @@ public class PaceController : MonoBehaviour
         second,
         minute,
         hour,
-        day
+        day,
+        month
     }
     //[SerializeField]
     public TimeScale timeScale;
@@ -51,6 +52,8 @@ public class PaceController : MonoBehaviour
             case TimeScale.day:
                 //Time.fixedDeltaTime = 1f;
                 return 3600f*24f;
+            case TimeScale.month:
+                return 3600f*24f*30f;
             default:
                 throw new System.Exception("Unrecognized time scale: "+scale);
         }
